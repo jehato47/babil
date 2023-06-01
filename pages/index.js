@@ -1,15 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Message } from "semantic-ui-react";
 import eventTracker from "../ethereum/DisasterEventTracker";
 
 const HomePage = ({ owner }) => {
   const router = useRouter();
   const [events, setEvents] = useState([]);
+  const [metamaskInstalled, setMetamaskInstalled] = useState(true);
 
   useEffect(() => {
+    checkMetamaskInstalled();
     getAllEvents();
   }, []);
+
+  const checkMetamaskInstalled = () => {
+    if (typeof window.ethereum === "undefined" || !window.ethereum.isMetaMask) {
+      setMetamaskInstalled(false);
+    }
+  };
 
   const goToEvent = (address) => {
     router.push(`/disasterReport/${address}`);
@@ -59,6 +67,12 @@ const HomePage = ({ owner }) => {
 
   return (
     <Fragment>
+      {!metamaskInstalled && (
+        <Message warning>
+          <Message.Header>MetaMask Not Detected</Message.Header>
+          <p>Please make sure you have MetaMask installed to interact with the blockchain.</p>
+        </Message>
+      )}
       <h3>Reported Disasters</h3>
       <Button primary onClick={handleAddNew}>
         Add New
