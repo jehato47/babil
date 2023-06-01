@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Card } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
 import eventTracker from "../ethereum/DisasterEventTracker";
 
 const HomePage = ({ owner }) => {
@@ -46,16 +46,23 @@ const HomePage = ({ owner }) => {
       <Card
         key={event.id}
         header={event.eventType}
-        description={<a onClick={() => goToEvent(event.id)}>View Events</a>}
+        description={<a onClick={() => goToEvent(event.id)}>View Event</a>}
         fluid
         style={{ overflowWrap: "break-word" }}
       />
     ));
   };
 
+  const handleAddNew = () => {
+    router.push("/createEvent");
+  };
+
   return (
     <Fragment>
       <h3>Reported Disasters</h3>
+      <Button primary onClick={handleAddNew}>
+        Add New
+      </Button>
       {renderCampaigns()}
     </Fragment>
   );
