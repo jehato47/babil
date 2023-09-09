@@ -60,13 +60,29 @@ Web3.js, a popular JavaScript library for Ethereum interactions, is used within 
 
 ## Getting Started
 
-To use the BABİL Emergency Communication System and create an emergency communication platform, follow these steps:
+To set up and run the BABİL Emergency Communication System web application using Next.js, follow these steps:
 
-1. 🚀 **Deploy the Contract**: Deploy the `DisasterEventTracker` contract on the Ethereum blockchain.
+1. 📁 **Clone the Next.js App**: Clone the Next.js app repository by running the following command in your terminal:
 
-2. 🧑‍💼 **Set Ownership**: Set the contract owner to a secure Ethereum address that will manage the system.
+   ```bash
+   git clone https://github.com/jehato47/babil.git
+   ```	
 
-3. 🌐 **Utilize Functions**: Use the contract functions to create disaster events, track event statuses, accept donations, and retrieve event information.
+2. 🏗️ Install Dependencies: Navigate to the cloned directory and install the project dependencies:
+   ```
+   cd babil
+   npm install
+   ```
+
+3. ⚙️ Configuration: Configure the application to connect to the Ethereum blockchain. You may need to set up environment variables or update the Web3.js configuration with the appropriate Ethereum network and contract addresses.
+   
+4. 🚀 Run the Application: Start the Next.js application:
+   ```
+    npm run dev
+    ```
+    
+    The application should now be running locally and accessible at `http://localhost:3000`.
+
 
 ## Security Considerations
 
